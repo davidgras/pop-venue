@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
+    <!-- Google Maps library -->
+        <!-- Google Maps Libraries: places, geometry -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADdKjhLG63lvVG4kH6QJbZXsBCeS1RtpE&libraries=places,geometry&callback=init" async defer></script>
+        
     <!-- PopVenues JS functions -->
     <script src="popvenues.js"></script>
 
@@ -26,7 +30,6 @@
             <div class="form-group">
                 <label for="location">Looking for trendy places? Tell me where...</label>
                 <input id="location" type="text" placeholder="eg: London" class="form-control" />
-                <button id="search" class="btn btn-info" >Get Venues</button>
             </div>
 
             <div id="result"></div>
