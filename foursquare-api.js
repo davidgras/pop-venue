@@ -2,18 +2,18 @@
  * Foursquare API functions
  */
 
+// Init libraries
+require('dotenv').config()
 // HTTP requests module
 const http = require('./http-requests.js');
 
 // Foursquare API params
-const urlVenuesExplore = 'https://api.foursquare.com/v2/venues/explore';
-const clientId = 'LC5U5DYCADZVTWUZCXVGK53QUZKTNTMXTWJ1VNHS3CAH2KSO';
-const clientSecret = 'Y0YBZ0LTWADEXX5RJS0CMD5QZBAVVUCC3AEAWMSPKEAKHW3S';
+const urlVenuesExplore = process.env.FOURSQUARE_VENUES_EXPLORE_URL;
 var params = {
-    client_id: clientId,
-    client_secret: clientSecret,
-    v: '20170801', 
-    limit: '5' 
+    client_id:      process.env.FOURSQUARE_CLIENT_ID,
+    client_secret:  process.env.FOURSQUARE_CLIENT_SECRET,
+    v:              process.env.FOURSQUARE_VENUES_EXPLORE_VERSION, 
+    limit:          process.env.FOURSQUARE_VENUES_EXPLORE_AMOUNT 
 };
 
 // Get Popular venues from location name

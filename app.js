@@ -2,13 +2,14 @@
  * PopVenue App v1.
  */
 
-// Libraries
+// Init libraries
 const express = require('express');
 const foursquareApi = require('./foursquare-api.js');
+require('dotenv').config()
 
 // HTTP Server parameters
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = process.env.SERVER_HOST;
+const port = process.env.SERVER_PORT;
 const app = express()
 
 // Init HTTP Server
