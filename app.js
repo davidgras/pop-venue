@@ -21,8 +21,14 @@ app.listen(port, (err) => {
   console.log(`PopVenue App Server listening at http://${hostname}:${port}/`);
 })
 
+app.get('/ws/venues/:location', (req, res) => {
+    var response = foursquareApi.getPopularVenuesByLocation(req.params.location, (result) => {
+       res.send(result);
+    });
+});
 
-// Web Services: get popular venues
-app.get('/ws/venues', (req, res) => {
-  res.sendStatus(200);
+app.get('/ws/venues/:lat/:lon', (req, res) => {
+    var response = foursquareApi.getPopularVenuesByLatLon(req.params.lat, req.params.lon, (result) => {
+       res.send(result);
+    });
 });
