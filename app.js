@@ -5,7 +5,8 @@
 // Init libraries
 const express = require('express');
 const foursquareApi = require('./foursquare-api.js');
-require('dotenv').config()
+require('dotenv').config();
+var path = require('path');
 
 // HTTP Server parameters
 const hostname = process.env.SERVER_HOST;
@@ -13,13 +14,17 @@ const port = process.env.SERVER_PORT;
 const app = express()
 
 // Init HTTP Server
-app.get('/', (req, res) => {
-  res.send('Welcome to PopVenue')
-})
 app.listen(port, (err) => {
-  if (err)
-    return console.log('Server is not running', err)
-  console.log(`PopVenue App Server listening at http://${hostname}:${port}/`);
+    if (err)
+        return console.log('Server is not running', err)
+    console.log(`PopVenue App Server listening at http://${hostname}:${port}/`);
+})
+// Public HTML folder
+app.use(express.static('public'));
+
+// Home page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public', 'popvenues.html'));
 })
 
 // GET Popular Venues by location parameter
