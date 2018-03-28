@@ -16,8 +16,7 @@ var request = require('request');
 exports.get = (url,params,callback) => {
         request.get(url+'?'+buildQueryString(params),(err,res,body) => {
         if( err ) {
-            console.log(err)
-            throw new Error(err);
+            throw new Error('HTTP Request ERROR');
         }
         callback(body);
     })

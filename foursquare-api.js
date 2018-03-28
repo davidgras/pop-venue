@@ -21,11 +21,7 @@ exports.getPopularVenuesByLocation = (location,callback) => {
 
     // Location parameter
     params.near = location;
-    
-    // API request
-    http.get(urlVenuesExplore,params,(body) => {
-        callback( JSON.parse( body ).meta )
-    });
+    getPopularVenues(params,callback);
 }
 
 // Get Popular venues from lat/lon coordinates
@@ -33,9 +29,23 @@ exports.getPopularVenuesByLatLon = (lat,lon,callback) => {
 
     // Lat/Lon parameter
     params.ll = lat + ',' + lon;
-    
+    getPopularVenues(params,callback);
+}
+
+/**
+ * Generic Popular Venues call.
+ * JSON response with either "error" message or "venues" array.
+ * - params (Array): /venues/explore parameters
+ * - callback (function): with JSON response
+ * More info: https://developer.foursquare.com/docs/api/venues/explore
+ */
+function getPopularVenues(params,callback) {
     // API request
     http.get(urlVenuesExplore,params,(body) => {
-        callback( JSON.parse( body ).meta )
+        var result = JSON.parse( body );
+        if( result.meta.code == 200 )
+            callback({ venues: result.response.groups[0].items } )
+        else
+            callback({ error: `[${result.meta.code}] ${result.meta.errorType}: ${result.meta.errorDetail}` })
     });
 }

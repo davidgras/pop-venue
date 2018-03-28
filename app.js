@@ -21,14 +21,26 @@ app.listen(port, (err) => {
   console.log(`PopVenue App Server listening at http://${hostname}:${port}/`);
 })
 
+// GET Popular Venues by location parameter
 app.get('/ws/venues/:location', (req, res) => {
-    var response = foursquareApi.getPopularVenuesByLocation(req.params.location, (result) => {
-       res.send(result);
-    });
+    try {
+        var response = foursquareApi.getPopularVenuesByLocation(req.params.location, (result) => {
+           res.send(result);
+        });
+    }
+    catch(ex) {
+        res.send({ error: ex.message });
+    }
 });
 
+// GET Popular Venues by lat/lon parameters
 app.get('/ws/venues/:lat/:lon', (req, res) => {
-    var response = foursquareApi.getPopularVenuesByLatLon(req.params.lat, req.params.lon, (result) => {
-       res.send(result);
-    });
+    try {
+        var response = foursquareApi.getPopularVenuesByLatLon(req.params.lat, req.params.lon, (result) => {
+           res.send(result);
+        });
+    }
+    catch(ex) {
+        res.send({ error: ex.message });
+    }
 });
