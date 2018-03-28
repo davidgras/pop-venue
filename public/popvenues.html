@@ -18,6 +18,10 @@
         
     <!-- PopVenues JS functions -->
     <script src="popvenues.js"></script>
+    
+    <style>
+        #map { width:100%; height:400px; }
+    </style>
 
 </head>
 <body>
@@ -25,14 +29,20 @@
     <div class="container">
         <div class="col-md-12 col-md-offset-2">
         
+            <!-- Header -->
             <h1 class="jumbotron">Welcome to PopVenue</h1>
 
+            <!-- Location input -->
             <div class="form-group">
                 <label for="location">Looking for trendy places? Tell me where...</label>
                 <input id="location" type="text" placeholder="eg: London" class="form-control" />
             </div>
 
-            <div id="result"></div>
+            <!-- Map -->
+            <div id="result" class="form-group">
+                <div id="map"></div>
+            </div>
+
         </div>
     </div>
     
